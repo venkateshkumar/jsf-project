@@ -77,13 +77,7 @@ public class EmployeeView implements Serializable {
 	@PostConstruct
 	public void init() {
 		 lstDeptTos = departmentService.findAllDepartments();
-		 lstEmployeeTos =new ArrayList<>();
-		 lstDeptTos.add(new DepartmentDTO(1L, "IT"));
-		 lstDeptTos.add(new DepartmentDTO(2L, "OPERATIONS"));
-		 lstDeptTos.add(new DepartmentDTO(3L, "FINANCE"));
-		 lstDeptTos.add(new DepartmentDTO(4L, "HR"));
-		 
-		 lstEmployeeTos.add(new EmployeeDTO(1L, "Sai", "Home Address",new DepartmentDTO(1L, "IT")));
+		 lstEmployeeTos =employeeService.findAllEmployees();
 	}
    
 	/**
