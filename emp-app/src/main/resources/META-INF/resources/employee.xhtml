@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Employee Login Form</title>
+</h:head>
+
+<h:body>
+	<h:form id="employeeForm">
+		<p:panel header="Employee Details">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Employee Name"></h:outputLabel>
+				<p:inputText value="#{employeeView.employeeName}"></p:inputText>
+				<h:outputLabel value="Employee Address"></h:outputLabel>
+				<p:inputTextarea value="#{employeeView.employeeAddress}"></p:inputTextarea>
+				<h:outputLabel value="Department"></h:outputLabel>
+				<p:selectOneListbox value="#{employeeView.department}"
+					label="Select Department">
+					<f:selectItems value="#{employeeView.lstDeptTos}" var="dept"
+						itemValue="#{dept.deptId}" itemLabel="#{dept.deptName}">
+					</f:selectItems>
+				</p:selectOneListbox>
+				<p:commandButton value="Save"
+					actionListener="#{employeeView.saveEmployee}"></p:commandButton>
+				<p:commandButton value="Reset" actionListener="#{employeeView.reset}"
+					update="employeeForm"></p:commandButton>
+				<p:commandButton value="Update"
+					actionListener="#{employeeView.updateEmployee}" rendered="employeeForm"></p:commandButton>
+			</h:panelGrid>
+			<p:dataTable value="#{employeeView.lstEmployeeTos}" var="employeeTo">
+				<p:column headerText="Employee Name" >
+					#{employeeTo.employeeName}	
+				</p:column>
+				<p:column headerText="Address">
+					#{employeeTo.employeeAddress}
+				</p:column>
+				<p:column headerText="Department">
+					#{employeeTo.departmentDTO.deptName}
+				</p:column>
+				<p:column headerText="Options">
+					<p:commandButton icon="ui-icon-pencil" title="Edit" actionListener="#{employeeView.editEmployee}" update="employeeForm"  >
+						<f:setPropertyActionListener value="#{employeeTo}" target="#{employeeView.selectedEmployeeDTO}" />				
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-closethick" title="Delete" actionListener="#{employeeView.deleteEmployee}"  >
+						<f:setPropertyActionListener value="#{employeeTo}" target="#{employeeView.selectedEmployeeDTO}" />		
+					</p:commandButton>
+					
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

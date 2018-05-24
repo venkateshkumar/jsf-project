@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>Login Form</title>
+</h:head>
+
+<h:body>
+	<h:form id="loginForm">
+	<p:panel  header="Login">
+	<h:panelGrid columns="2">
+	<h:outputLabel value="User Name"></h:outputLabel>
+	<p:inputText value="#{loginView.userName}"></p:inputText>
+	<h:outputLabel value="Password"></h:outputLabel>
+	<p:password value="#{loginView.password}"></p:password>
+	<p:commandButton value="Login" actionListener="#{loginView.loginForm}"></p:commandButton>
+	<p:commandButton value="Reset" actionListener="#{loginView.reset}" update="loginForm"></p:commandButton>
+	</h:panelGrid>
+	</p:panel>
+	</h:form>
+</h:body>
+</html>

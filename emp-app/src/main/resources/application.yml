@@ -1,0 +1,12 @@
+server:
+  context-path: /hayagrivas
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sai_demo?useSSL=false
+    username: janane
+    password: janane
+  jpa:
+    hibernate:
+      ddl-auto: create
